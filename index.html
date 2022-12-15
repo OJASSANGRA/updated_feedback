@@ -4,21 +4,120 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FeedBack Form</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
+    <style>
+        body{
+            
+            background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd9syzsGPpYiaKnC86-rXyOs_XNFv0-Hhm8g&usqp=CAU") ;
+            width: 100%;
+            
+            
+        }
+        .cor{
+            position:relative;
+            width:15%;
+            margin-top:0%;
+            opacity:0.8;
+            
+            border-radius: 30px;
+        }
+        .rob{
+            position:relative;
+            width: 15%;
+           margin-top: 2px;
+        }
+        
+        .feedback-form{
+            background: #fff;
+            margin-top: 5%;
+            margin-bottom:6%;
+         
+            border-radius: 95px;
+        border-style:groove;
+        border-width: 5px;
+        border-color: rgb(171, 205, 226);
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+         
+            
+        }
+        
+        .feedback-form .form-control{
+            border-radius: 1rem;
+            background-color: rgb(240, 240, 240);
+          
+        }
+        .feedback-image{
+            text-align: center;
+        }
+        .feedback-image img{
+            border-radius: 6rem;
+            width: 20%;
+            margin-top: 0%;
+            opacity: 1.5;
+            transform: rotate(0deg);
+            
+        }
+        
+        .feedback-form form{
+            padding: 10%;
+        
+        }
+        .feedback-form form .row{
+            margin-bottom: -8%;
+        
+        }
+        .feedback-form h2{
+            margin-bottom: 8%;
+            margin-top: -12%;
+            text-align: center;
+            color: #0062cc;
+        }
+        .feedback-form button{
+            width: 20%;
+            border: none;
+            border-radius: 1rem;
+            padding: 1.5%;
+            background:skyblue;
+            color: #fff;
+            cursor:pointer;
+            
+        
+        }
+        
+        .feedback-form p{
+            margin-top: 10px;
+            margin-bottom:3px ;
+            color: gray;
+        }
+        .alert{
+        width: 100%;
+        background-color: rgb(85, 244, 244);
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 900;
+        display: none;
+        
+        
+        }
+        
+        button:hover {
+           
+            color: white;
+        
+            transform: translateY(-0.15em);
+        
+        }
+        </style>
 </head>
-<link rel="stylesheet" href="feed1.css">
+
 <body>
-
-
-  
-
-      </script>
-
-
 
     <img src=""  class="cor">
 
@@ -93,7 +192,80 @@
 
 
      <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-     <script src="./mail.js"></script>
+     <script >const firebaseConfig = {
+        apiKey: "AIzaSyBjXJ1AB0p16A6rW-MEnuSeKfQtW9_cNdY",
+        authDomain: "feedbackform-7972a.firebaseapp.com",
+        databaseURL: "https://feedbackform-7972a-default-rtdb.firebaseio.com",
+        projectId: "feedbackform-7972a",
+        storageBucket: "feedbackform-7972a.appspot.com",
+        messagingSenderId: "851265035494",
+        appId: "1:851265035494:web:4d28f7f43068fb5118ef27"
+      };
+        firebase.initializeApp(firebaseConfig);
+        
+      
+      
+        var feedbackFormDB = firebase.database().ref("feedbackFrom");
+      
+        document.getElementById("feedbackForm").addEventListener("submit",submitForm);
+      
+        function submitForm(e){
+      
+          e.preventDefault();
+      
+          var name=getElementVal("name");
+          var number=getElementVal("number");
+          var emailid=getElementVal("emailid");
+          var seatno=getElementVal("seatno");
+          var msgContent=getElementVal("msgContent");
+          var topic=getElementVal("topic");
+          var gotanswers=document.querySelector('input[name="1"]:checked').value;
+          var understood=document.querySelector('input[name="2"]:checked').value;
+          var experience=document.querySelector('input[name="3"]:checked').value;
+      
+           saveMessages(name,number,emailid,seatno,msgContent,topic,gotanswers,understood,experience);
+      
+          document.querySelector(".alert").style.display = "block";
+      
+          setTimeout(()=> {
+      
+            document.querySelector(".alert").style.display = "none";
+          },3000);
+      
+           document.getElementById("feedbackForm").reset();
+        }
+      
+      
+        const saveMessages = (name,number,emailid,seatno,msgContent,topic,gotanswers,understood,experience) =>{
+            
+           var newFeedbackForm = feedbackFormDB.push();
+      
+           newFeedbackForm.set({
+                       name : name,
+                       number : number,
+                       emailid : emailid,
+                       seatno : seatno,
+                       msgContent : msgContent,
+                       topic : topic,
+                       gotanswers : gotanswers,
+                       understood : understood,
+                       experience : experience,
+      
+      
+           });
+      
+        };
+      
+      
+      
+      
+        const getElementVal = (id) =>{
+      
+              return document.getElementById(id).value;
+      
+        };
+      
+      </script>
 
 </body>
 </html>
