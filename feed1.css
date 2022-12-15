@@ -1,0 +1,105 @@
+
+body{
+    
+    background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd9syzsGPpYiaKnC86-rXyOs_XNFv0-Hhm8g&usqp=CAU") ;
+    width: 100%;
+    
+    
+}
+.cor{
+    position:relative;
+    width:15%;
+    margin-top:0%;
+    opacity:0.8;
+    
+    border-radius: 30px;
+}
+.rob{
+    position:relative;
+    width: 15%;
+   margin-top: 2px;
+}
+
+.feedback-form{
+    background: #fff;
+    margin-top: 5%;
+    margin-bottom:6%;
+ 
+    border-radius: 95px;
+border-style:groove;
+border-width: 5px;
+border-color: rgb(171, 205, 226);
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+ 
+    
+}
+
+.feedback-form .form-control{
+    border-radius: 1rem;
+    background-color: rgb(240, 240, 240);
+  
+}
+.feedback-image{
+    text-align: center;
+}
+.feedback-image img{
+    border-radius: 6rem;
+    width: 20%;
+    margin-top: 0%;
+    opacity: 1.5;
+    transform: rotate(0deg);
+    
+}
+
+.feedback-form form{
+    padding: 10%;
+
+}
+.feedback-form form .row{
+    margin-bottom: -8%;
+
+}
+.feedback-form h2{
+    margin-bottom: 8%;
+    margin-top: -12%;
+    text-align: center;
+    color: #0062cc;
+}
+.feedback-form button{
+    width: 20%;
+    border: none;
+    border-radius: 1rem;
+    padding: 1.5%;
+    background:skyblue;
+    color: #fff;
+    cursor:pointer;
+    
+
+}
+
+.feedback-form p{
+    margin-top: 10px;
+    margin-bottom:3px ;
+    color: gray;
+}
+.alert{
+width: 100%;
+background-color: rgb(85, 244, 244);
+padding: 10px 20px;
+border-radius: 5px;
+text-align: center;
+font-size: 18px;
+font-weight: 900;
+display: none;
+
+
+}
+
+button:hover {
+   
+    color: white;
+
+    transform: translateY(-0.15em);
+
+}
